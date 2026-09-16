@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>ByteQuest Privacy Policy</h1>
-<p class="meta">Effective August 28, 2026 · Applies to the ByteQuest iOS app</p>
+<p class="meta">Effective September 16, 2026 · Applies to the ByteQuest iOS app</p>
 
 <p>ByteQuest is a walking exploration game built to keep your data on your device. There are no ads, no third-party analytics SDKs, and no third-party services — everything the app touches runs on your device or inside Apple's iCloud. We never sell data, and nothing is used for advertising or tracking.</p>
 
@@ -22,16 +22,17 @@
 <p><strong>Location.</strong> Your GPS position reveals the map as you walk and detects when you arrive at landmarks. Location is used only while the app is open, is processed entirely on your device, and is never transmitted to us or anyone else. Your explored-map history is stored only in the app's local save file.</p>
 <p><strong>Steps (Apple Health).</strong> With your permission, ByteQuest reads your step count from Apple Health so walks taken while the app was closed still earn in-game coins. Step data is read-only, is used only on your device, and is never written back to Health, uploaded, or shared. Declining Health access simply means only in-app walking counts.</p>
 <p><strong>Game saves, photos, and journal.</strong> Your progress, quest photos, and journal entries live in the app's private storage on your device (and in your device backups). Quest photos you choose to save go to your own photo library.</p>
+<p><strong>Cloud save (your own iCloud).</strong> If your device is signed into iCloud, ByteQuest also keeps a copy of your game save in the private iCloud database that belongs to your Apple account, so a new phone or a reinstall can restore your explorer. That copy is stored by Apple inside your account; we cannot read it, and it is never shared with other players. You can back up, restore, or see the last backup time in Settings → Account &amp; Cloud Save, and Erase All Data deletes it.</p>
 
-<h2>Optional account: Sign in with Apple</h2>
-<p>You can play all of ByteQuest without any account. If you choose to sign in, we use Sign in with Apple and ask only for your name — never your email address. What we receive (your Apple account identifier, and your name if you share it) is stored on your device in the iOS Keychain; there is no ByteQuest server holding account data. You can sign out at any time in Settings, and you can stop the app's access entirely under iOS Settings → Apple Account → Sign-In &amp; Security → Sign in with Apple.</p>
+<h2>Account</h2>
+<p>There is no ByteQuest account to create and nothing to sign up for. The app uses the Apple account already signed into your device, through iCloud, for two things: the cloud save described above, and marking arena snapshots as yours. For the second, the app uses the opaque iCloud user record identifier Apple assigns to your account inside the ByteQuest iCloud container — not your name, email, or Apple ID. Without iCloud, everything works except cloud save and claiming arenas. (Earlier beta builds offered Sign in with Apple; any credential from that lives only on your device in the iOS Keychain and is removed by Erase All Data.)</p>
 
 <h2>Anonymous gameplay analytics</h2>
 <p>To understand which parts of the game are working, ByteQuest records gameplay events (for example "battle won" or "quest started") to our iCloud database. Each event carries the event name, a timestamp, the app version, and a random installation ID — a number the app makes up on first launch. It carries <strong>no</strong> name, email, Apple account identifier, location, or step counts (walking activity is reduced to coarse ranges before sending). The random ID is not connected to your identity or your gladiator name.</p>
 <p>You can turn this off anytime with the "Share Anonymous Analytics" toggle in Settings → Data &amp; Privacy. Turning it off stops all future events, discards anything queued, and nothing further leaves the device.</p>
 
 <h2>Data that leaves your device: arena records</h2>
-<p>ByteQuest's coliseum arenas are shared between players through Apple's iCloud (CloudKit) public database. When you claim an arena, a snapshot is published so other players can challenge it. That snapshot contains: your chosen gladiator name, your character's appearance and equipped gear, your level and battle stats, your win count, and claim timestamps. It contains no real name, no email, no location history, and no health data.</p>
+<p>ByteQuest's coliseum arenas are shared between players through Apple's iCloud (CloudKit) public database. When you claim or join an arena, a snapshot is published so other players can challenge it. That snapshot contains: your chosen gladiator name, your character's appearance and equipped gear, your level and battle stats, your win count, your kingdom banner if you chose one, claim timestamps, and the opaque iCloud user record identifier described under Account (so your own device can recognize the snapshot as yours). The arena record also carries the public coordinates of the landmark itself. It contains no real name, no email, no history of where you have walked, and no health data.</p>
 <p>Gladiator names pass a profanity filter, and any player can report or block a champion's name in-game. Reports are reviewed and offensive names are removed, typically within 24 hours. Blocking hides that champion on your device permanently.</p>
 
 <h2>Purchases</h2>
@@ -41,14 +42,14 @@
 <p>Local walk reminders and arena alerts are optional and can be disabled anytime in Settings. Arena updates arrive as silent background notifications from iCloud; they carry game data only.</p>
 
 <h2>Deleting your data</h2>
-<p><strong>In the app:</strong> Settings → Data &amp; Privacy → Erase All Data releases any arenas you hold, deletes your save, photos, journal, analytics queue, and installation ID from the device, and signs you out. Arena snapshots are also overwritten in the normal course of play whenever another player takes the arena.</p>
+<p><strong>In the app:</strong> Settings → Data &amp; Privacy → Erase All Data releases any arenas you hold and deletes those public records, deletes your iCloud cloud save, and erases your save, photos, journal, analytics queue, and installation ID from the device. Arena snapshots are also overwritten in the normal course of play whenever another player takes the arena.</p>
 <p><strong>By email:</strong> to have remaining server-side records (a current arena snapshot, your gladiator name, or analytics events under your installation ID) removed, email us (below) — we'll delete them within a few days. Deleting the app removes all on-device data immediately.</p>
 
 <h2>Children</h2>
-<p>ByteQuest has no chat and no free-text sharing other than the filtered gladiator name; the optional sign-in collects no email and creates no server-side profile. We do not knowingly collect personal information from children. If you believe a child has published personal information in a gladiator name, email us and we will remove it.</p>
+<p>ByteQuest asks every player their birth month and year once, neutrally, and keeps only the age group — never the birthdate. Players under 13 get the <strong>under-13 setting</strong>: the single-player game is the same, but arena fights become practice bouts that never write to the shared arena ledger, the kingdom war is off, analytics are off and stay off, and no name, location, or identifier for the child is sent anywhere. A parent or guardian can change the age setting in Settings after a verification step. ByteQuest has no chat and no free-text sharing other than the filtered gladiator name (which the under-13 setting never uses); there is no sign-up and no server-side profile. We do not knowingly collect personal information from children. If you believe a child has published personal information in a gladiator name, email us and we will remove it.</p>
 
 <h2>Permissions the app asks for</h2>
-<p>Location (while using the app) — reveal the map and detect landmark arrivals. Apple Health (read steps) — optional, credits closed-app walks. Camera — optional, photograph landmarks for quests. Notifications — optional reminders and arena alerts. Each permission can be declined or revoked in iOS Settings without breaking the core game.</p>
+<p>Location (while using the app) — reveal the map and detect landmark arrivals. Apple Health (read steps) — optional, credits closed-app walks. Camera — optional, photograph landmarks for quests. Photo library (add only) — optional, save quest photos to your library. Notifications — optional reminders and arena alerts. Each permission can be declined or revoked in iOS Settings without breaking the core game.</p>
 
 <h2>Changes</h2>
 <p>If this policy changes, the new version will be posted here with a new effective date. Material changes will be noted in the app's release notes.</p>
