@@ -16,7 +16,7 @@
 </head>
 <body>
 <h1>ByteQuest Privacy Policy</h1>
-<p class="meta">Effective October 18, 2026 · Applies to the ByteQuest iOS app and its Home Screen widget</p>
+<p class="meta">Effective November 5, 2026 · Applies to the ByteQuest iOS app and its Home Screen widget</p>
 
 <p>ByteQuest is a walking exploration game. There are no ads, no third-party analytics or advertising SDKs, and no tracking across other companies' apps or websites. We never sell or share personal data. Data that leaves your device is stored with Apple (iCloud and CloudKit), which acts as our service provider.</p>
 
@@ -34,16 +34,19 @@
 <p>If your device is signed into iCloud, ByteQuest keeps a copy of your game save in the private iCloud database that belongs to your Apple Account, so a new phone or a reinstall can restore your explorer. It holds your progress, items, coins, Super Gems, and explored map; step counts and walking distance are removed before it is uploaded. Apple stores it inside your account; we can't read it and it is never shared with other players. You can back up, restore, or see the last backup time in Settings → Account &amp; Cloud Save. Erase All Data deletes it.</p>
 
 <h2>Account</h2>
-<p>There is no ByteQuest account to create. The app uses the Apple Account signed into your device, through iCloud, for the cloud save and to mark arena snapshots as yours. For arenas, the app uses the opaque iCloud user record identifier Apple assigns inside the ByteQuest iCloud container — not your name, email, or Apple ID. Without iCloud, everything works except cloud save and arenas.</p>
+<p>There is no ByteQuest account to create. The app uses the Apple Account signed into your device, through iCloud, for the cloud save and to mark arena snapshots as yours. iCloud identifies you with an opaque user record identifier Apple assigns inside the ByteQuest iCloud container — not your name, email, or Apple ID. Arena snapshots show that identifier. Without iCloud, everything works except cloud save and arenas.</p>
 
-<h2>Anonymous gameplay analytics (optional)</h2>
-<p>ByteQuest asks once whether to share anonymous gameplay stats. Nothing is sent before you answer, and nothing is ever sent for players in the under-13 setting. If you choose Share, the app records gameplay events (for example "battle won", "quest started", or which Super Gem pack was bought and how gems were spent) to our iCloud database. Each event carries the event name, a timestamp, the app version, and a random installation ID the app makes up on first launch. Events never include your name, email, Apple account identifier, location, or step counts. You can change your answer any time in Settings → Data &amp; Privacy; turning it off stops all future events and discards anything queued.</p>
+<h2>Game Center (optional)</h2>
+<p>If your device is signed in to Apple's Game Center, Apple shows a welcome banner when ByteQuest opens and the app shows your Game Center name in Settings. ByteQuest doesn't send or store your Game Center name or identifiers anywhere. Game Center isn't used in the under-13 setting.</p>
+
+<h2>Gameplay analytics (optional)</h2>
+<p>ByteQuest asks once whether to share gameplay stats. Nothing is sent before you answer, and nothing is ever sent for players in the under-13 setting. If you choose Share, the app records gameplay events (for example "battle won", "quest started", or which Super Gem pack was bought and how gems were spent) to our iCloud database. Each event carries the event name, a timestamp, the app version, a random installation ID, and details such as levels, coin and gem balances, your guild, your age group (13–17 or 18+) when it's set, and error codes. iCloud also stores each event with the opaque iCloud identifier described above, so the events from one Apple Account are linked to each other and to that account's arena records and reports. Events never include your name, email, location, or step counts. You can change your answer any time in Settings → Data &amp; Privacy; turning it off stops all future events and discards anything queued. Turning it off doesn't delete events already sent; Delete Uploaded Stats does (see below).</p>
 
 <h2>Data that leaves your device: arena records</h2>
-<p>Coliseum arenas are shared between players through Apple's CloudKit public database. When you claim or join an arena, a snapshot is published so other players can challenge it: your gladiator name, your character's appearance and gear, your level and battle stats, your win count, your guild if you joined one, claim timestamps, the opaque iCloud identifier described above, and the landmark's coordinates. It contains no real name, email, walking history, or health data.</p>
+<p>Coliseum arenas are shared between players through Apple's CloudKit public database. When you claim or join an arena, a snapshot is published so other players can challenge it: your gladiator name, your character's appearance and gear, your level and battle stats, your win count, your guild if you joined one, claim timestamps, the opaque iCloud identifier described above, and the landmark's coordinates. The arena record also lists unopened chests your champion earned there, each with the challenger's gladiator name, level, and date. It contains no email, walking history, or health data. Snapshots saved by versions of the app before November 2026 also include the explorer name you chose, until you leave or lose that arena or use Erase All Data.</p>
 
 <h2>Reports, blocks, and bans</h2>
-<p>Gladiator names pass a profanity filter. Any player can report or block any name on an arena. Reports send the reported name, the arena, and that player's opaque iCloud identifier to us; we review them, typically within 24 hours, and remove offensive names. Blocking hides that player on your device, even if they change their name. We can ban an account from the arenas: banned identifiers are published in a list on this website that the app downloads (GitHub, which hosts this site, sees that request like any web visit).</p>
+<p>Gladiator names pass a profanity filter. Any player can report or block any name on an arena. Reports send the reported name, the arena, and that player's opaque iCloud identifier to us, stored with your own iCloud identifier; we review them, typically within 24 hours, and remove offensive names. Blocking hides that player on your device, even if they change their name. We can ban an account from the arenas: banned identifiers are published in a list on this website that the app downloads (GitHub, which hosts this site, sees that request like any web visit).</p>
 
 <h2>Purchases and odds</h2>
 <p>ByteQuest offers optional in-app purchases: a ByteQuest Plus subscription and Super Gem packs. Apple handles all payments; we never see your payment details. Your Super Gem balance is part of your game save (and your iCloud cloud save). Erase All Data erases gems you bought. Restore Purchases restores your Plus subscription. Prices are shown before every purchase, subscriptions renew until cancelled in Settings, and the odds for every randomized reward are listed in the app under Settings → Prize Odds and on the Plus card.</p>
@@ -54,19 +57,25 @@
 <h2>How long we keep data</h2>
 <table>
 <tr><th>Data</th><th>Kept for</th></tr>
-<tr><td>Arena snapshots</td><td>While you hold the arena. Replaced when another player takes it; deleted by Erase All Data.</td></tr>
-<tr><td>Analytics events</td><td>Up to 24 months, then deleted.</td></tr>
-<tr><td>Reports</td><td>Up to 12 months after review, then deleted.</td></tr>
+<tr><td>Arena snapshots</td><td>While you hold the arena. Removed when another player takes it, when you leave, or by Erase All Data.</td></tr>
+<tr><td>Unopened arena chests</td><td>On the arena record until you collect them. Entries older than 30 days are removed the next time the arena is updated.</td></tr>
+<tr><td>Analytics events</td><td>Up to 24 months, then deleted. A deletion request deletes them sooner.</td></tr>
+<tr><td>Reports</td><td>Up to 12 months after filing, then deleted.</td></tr>
+<tr><td>Deletion requests</td><td>Deleted when carried out, within 30 days.</td></tr>
 <tr><td>Ban list entries</td><td>Until the ban is lifted.</td></tr>
 <tr><td>iCloud cloud save</td><td>Until you delete it (Erase All Data) or delete it from your iCloud storage.</td></tr>
 </table>
 
 <h2>Deleting your data</h2>
-<p>In the app: Settings → Data &amp; Privacy → Erase All Data releases any arenas you hold and deletes those public records, deletes your iCloud cloud save, and erases your save, photos, journal, analytics queue, and installation ID from the device. Deleting the app removes all on-device data.</p>
-<p>By email: to have remaining server-side records (an arena snapshot, your gladiator name, or analytics events under your installation ID) removed, email us (below). We delete them within 7 days.</p>
+<p>In the app, Settings → Data &amp; Privacy:</p>
+<ul>
+<li><b>Delete Uploaded Stats</b> sends us a deletion request for every gameplay event your Apple Account has sent. We carry it out within 30 days. It works by account, so it also covers events sent from other devices or before a reinstall. If you no longer have the app, reinstall it on a device signed in to the same Apple Account and use this option.</li>
+<li><b>Erase All Data</b> releases any arenas you hold and deletes those public records, deletes your iCloud cloud save, sends a deletion request for your stats and any arena still showing your champion, and erases your save, photos, journal, analytics queue, and installation ID from the device. If iCloud can't be reached, the request is sent the next time the app opens on that device.</li>
+</ul>
+<p>The request Erase All Data sends also removes your champion and its unopened chests from any arena still showing them. Deleting the app removes all on-device data but not server-side data, so use the options above first. Reports you filed are kept for safety reviews for up to 12 months. For anything else, email us (below); we respond within 7 days.</p>
 
 <h2>Children and teens</h2>
-<p>ByteQuest asks every player's age once and keeps only the age group, never the birthdate. On iOS 26 and later it first asks Apple for the age range on your Apple Account and uses it if you choose to share it. Players under 13 get the under-13 setting: the single-player game is the same, but arena fights become practice bouts that never write to the shared arena ledger, guilds are off, analytics are off, purchases are hidden, and no name, location, or identifier for the child is sent anywhere. The under-13 setting is remembered on the device even if the app is reinstalled, and it can't be switched off inside the app except by Apple's age range for the account showing 13 or older. Players under 18 start with reminder notifications off. We do not knowingly collect personal information from children under 13. If you believe a child has published personal information in a gladiator name, email us and we will remove it.</p>
+<p>ByteQuest asks every player's age once and keeps only the age group, never the birthdate. On iOS 26 and later it first asks Apple for the age range on your Apple Account and uses it if you choose to share it. Players under 13 get the under-13 setting: the single-player game is the same, but arena fights become practice bouts that never write to the shared arena ledger, guilds are off, analytics are off, purchases are hidden, and no name, location, or identifier for the child is sent anywhere, apart from requests to remove arena data or stats from before the setting was turned on. The under-13 setting is remembered on the device even if the app is reinstalled, and it can't be switched off inside the app except by Apple's age range for the account showing 13 or older. Players under 18 start with reminder notifications off. We do not knowingly collect personal information from children under 13. If you believe a child has published personal information in a gladiator name, email us and we will remove it.</p>
 
 <h2>Do Not Track</h2>
 <p>ByteQuest doesn't track you across other companies' apps or websites, so it behaves the same whether or not a Do Not Track signal is set.</p>
