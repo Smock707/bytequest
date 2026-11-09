@@ -1,16 +1,23 @@
 # ByteQuest public pages
 
-`privacy.html` + `support.html` — the two URLs baked into the app (`AppLinks` in
-`JournalView.swift`) and required by App Store Connect.
+The public site: the landing page (`index.html`), `privacy.html`, `support.html`,
+and `banned.json` (the arena ban list the app downloads).
 
-To publish (once):
+It's published from the public repo Smock707/bytequest (GitHub Pages, `main` / root)
+at **https://playbytequest.com** (domain registered at Porkbun, Nov 9, 2026).
+The `CNAME` file sets the custom domain; keep it in the repo root.
 
-1. Create a **public** GitHub repo named `bytequest` under the `nealfc` account.
-2. Push these three files to the repo root (`main` branch).
-3. Repo Settings → Pages → Source: **Deploy from a branch** → `main` / `/ (root)` → Save.
-4. Verify both URLs load:
-   - https://smock707.github.io/bytequest/privacy.html  ← App Store Connect "Privacy Policy URL"
-   - https://smock707.github.io/bytequest/support.html  ← App Store Connect "Support URL"
+- https://playbytequest.com/privacy.html  ← App Store Connect "Privacy Policy URL"
+- https://playbytequest.com/support.html  ← App Store Connect "Support URL"
+- https://playbytequest.com/banned.json   ← fetched by the app (`Moderation.listURL`, ColiseumService.swift)
 
-Published under Smock707 on Aug 28, 2026. If the repo name or account ever changes, update the two constants in `AppLinks`
-(JournalView.swift) to match before archiving.
+The privacy and support URLs are also baked into the app (`AppLinks` in
+JournalView.swift). Builds up to 48 carry the old
+`smock707.github.io/bytequest/` URLs; GitHub Pages redirects those to the domain.
+
+Contact email: hello@playbytequest.com (Porkbun email forwarding to Neal's Gmail).
+
+DNS at Porkbun:
+- `A` playbytequest.com → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+- `CNAME` www → smock707.github.io
+- MX and TXT records for email forwarding (added by Porkbun)
