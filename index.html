@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ByteQuest — The Real World RPG</title>
+<title>ByteQuest: Explore Your World</title>
 <meta name="description" content="Walk your city to clear the fog, fight monsters, and win loot. ByteQuest is a pixel-art RPG played on the streets around you. Free on iPhone.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ByteQuest — The Real World RPG">
+<meta property="og:title" content="ByteQuest: Explore Your World">
 <meta property="og:description" content="Walk your city to clear the fog, fight monsters, and win loot. Free on iPhone.">
 <meta property="og:url" content="https://smock707.github.io/bytequest/">
 <meta property="og:image" content="https://smock707.github.io/bytequest/img/og.jpg">
@@ -78,6 +78,18 @@
   .feature h2 { margin: 0 0 8px; font-size: 16px; letter-spacing: .12em; color: var(--gold); }
   .feature p { margin: 0; color: var(--parch); font-size: 15px; }
 
+  section.trailer { padding: 8px 0 8px; text-align: center; }
+  .trailer video {
+    width: min(300px, 80vw); height: auto; border-radius: 18px; background: #000;
+    box-shadow: 0 10px 28px rgba(0,0,0,.5);
+  }
+  .trailer p { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+
+  section.maker { padding: 0 0 56px; }
+  .maker .wrap { max-width: 720px; }
+  .maker h2 { margin: 0 0 10px; font-size: 16px; letter-spacing: .12em; color: var(--gold); }
+  .maker p { margin: 0; color: var(--parch); }
+
   section.facts { padding: 0 0 56px; }
   .facts ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .facts li { padding-left: 26px; position: relative; color: var(--parch); }
@@ -94,23 +106,29 @@
   <div class="wrap">
     <img class="icon" src="img/icon.png" alt="ByteQuest app icon" width="112" height="112">
     <img class="wordmark pixel" src="img/wordmark.png" alt="ByteQuest" width="536" height="83">
-    <h1>THE REAL WORLD RPG</h1>
+    <h1>BECOME THE STRONGEST ADVENTURER IN YOUR CITY</h1>
     <p class="lede">Your town is covered in fog. Walk to clear it, find landmarks, fight monsters, and win loot. Every step you take earns coins.</p>
     <span class="cta soon">COMING SOON TO IPHONE</span>
     <p class="note">Free to play. No ads. No account to make.</p>
   </div>
 </header>
 
+<section class="trailer">
+  <video src="img/trailer.mp4" poster="img/trailer-poster.jpg" controls playsinline muted preload="none"
+         width="540" height="960" aria-label="Gameplay: the fog clearing on a walk"></video>
+  <p>Gameplay, sped up 8 times.</p>
+</section>
+
 <div class="shots" aria-label="Screenshots">
-  <img src="img/01_city_map.jpg" alt="Your city is the game map: walk real streets to clear the fog" width="600" height="1303" loading="lazy">
-  <img src="img/02_fight_monsters.jpg" alt="Fight monsters on your walk with timing battles" width="600" height="1303" loading="lazy">
-  <img src="img/03_story.jpg" alt="Follow the story: quests send you to real places" width="600" height="1303" loading="lazy">
-  <img src="img/04_win_loot.jpg" alt="Win loot at real landmarks" width="600" height="1303" loading="lazy">
-  <img src="img/05_carnival_games.jpg" alt="Carnival games: prize wheel, high striker, shell game, memory cards" width="600" height="1303" loading="lazy">
-  <img src="img/06_build_camp.jpg" alt="Build your camp from a tent to a throne room" width="600" height="1303" loading="lazy">
-  <img src="img/07_collect_gear.jpg" alt="Collect over 120 hats, weapons, shields and pets" width="600" height="1303" loading="lazy">
-  <img src="img/08_real_players.jpg" alt="Battle real players and take an arena for your guild" width="600" height="1303" loading="lazy">
-  <img src="img/09_steps_widget.jpg" alt="Every step earns coins; your steps on your Home Screen" width="600" height="1303" loading="lazy">
+  <img src="img/01_city_map.jpg" alt="Clear the fog over your town" width="600" height="1303" loading="lazy">
+  <img src="img/02_fight_monsters.jpg" alt="Monsters guard the loot: slashing a Dragon Whelp" width="600" height="1303" loading="lazy">
+  <img src="img/03_build_camp.jpg" alt="Build your camp: Streamside, Treetop Village and the Throne Room" width="600" height="1303" loading="lazy">
+  <img src="img/04_story.jpg" alt="Explore to complete questlines: a walking route to Elena on the map" width="600" height="1303" loading="lazy">
+  <img src="img/05_win_loot.jpg" alt="Big landmarks, better loot" width="600" height="1303" loading="lazy">
+  <img src="img/06_carnival_games.jpg" alt="Carnival games for prizes: prize wheel, high striker, shell game, memory cards" width="600" height="1303" loading="lazy">
+  <img src="img/07_collect_gear.jpg" alt="Collect over 120 pieces of gear" width="600" height="1303" loading="lazy">
+  <img src="img/08_real_players.jpg" alt="Hold an arena for your guild" width="600" height="1303" loading="lazy">
+  <img src="img/09_steps_widget.jpg" alt="Track coins as you walk with the Home Screen widgets" width="600" height="1303" loading="lazy">
 </div>
 
 <section class="features">
@@ -150,6 +168,13 @@
       <li>Your progress is saved to your own iCloud, so a new phone picks up where you left off.</li>
       <li>Location is used only while the app is open. We never receive your route.</li>
     </ul>
+  </div>
+</section>
+
+<section class="maker">
+  <div class="wrap">
+    <h2>WHO MADE THIS</h2>
+    <p>Welcome adventurer! My name is Neal and ByteQuest is my love letter to the fantasy genre that I've been obsessed with my whole life. I hope you enjoy it, and PLEASE give me ideas on how I can improve this experience. I read every piece of feedback that comes in personally. Now get out there and explore!</p>
   </div>
 </section>
 
