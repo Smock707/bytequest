@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ByteQuest: Explore Your World</title>
 <meta name="description" content="Walk your city to clear the fog, fight monsters, and win loot. ByteQuest is a pixel-art RPG played on the streets around you. Free on iPhone.">
+<meta name="apple-itunes-app" content="app-id=6786463658">
+<meta name="theme-color" content="#141c12">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ByteQuest: Explore Your World">
 <meta property="og:description" content="Walk your city to clear the fog, fight monsters, and win loot. Free on iPhone.">
@@ -12,9 +14,11 @@
 <meta property="og:image" content="https://playbytequest.com/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ByteQuest: Explore Your World. Become the strongest adventurer in your city. A phone shows the fog clearing over a city map.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" as="image" href="img/hero.webp" type="image/webp">
 <style>
   :root {
     --forest: #141c12; --forest-2: #1b2619; --bark: #3a2a19; --bark-dark: #241a0e;
@@ -25,98 +29,194 @@
   html { background: var(--forest); }
   body {
     margin: 0; color: var(--cream); background: var(--forest);
-    font: 17px/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font: 17px/1.55 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     -webkit-font-smoothing: antialiased;
   }
-  img { image-rendering: auto; }
   .pixel { image-rendering: pixelated; }
   a { color: var(--gold); }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  h2.label { margin: 0 0 14px; font-size: 15px; letter-spacing: .14em; color: var(--gold); text-align: center; }
 
+  /* Buttons */
+  .badge { display: inline-block; line-height: 0; }
+  .badge img { height: 56px; width: auto; }
+  .btn {
+    display: inline-block; padding: 14px 22px; border: 4px solid var(--bark-dark);
+    background: var(--gold); color: var(--bark-dark); font-weight: 800; letter-spacing: .08em;
+    text-decoration: none; box-shadow: 0 6px 0 var(--bark-dark); font-size: 16px; line-height: 1.2;
+  }
+  .btn:active { transform: translateY(3px); box-shadow: 0 3px 0 var(--bark-dark); }
+
+  /* Hero */
   header.hero {
     background:
-      radial-gradient(ellipse 70% 60% at 50% 45%, rgba(96,170,112,.22), transparent 70%),
+      radial-gradient(ellipse 70% 60% at 50% 40%, rgba(96,170,112,.22), transparent 70%),
       linear-gradient(#18301f, var(--forest));
-    padding: 56px 0 40px; text-align: center;
+    padding: 22px 0 36px; text-align: center;
   }
-  .hero .icon { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
-  .hero .wordmark { display: block; width: min(560px, 88vw); height: auto; margin: 28px auto 10px; }
+  .hero .grid { display: grid; gap: 22px; align-items: center; }
+  .hero .wordmark { display: block; width: min(320px, 78vw); height: auto; margin: 0 auto 12px; }
   .hero h1 {
-    font-size: clamp(18px, 3.4vw, 26px); letter-spacing: .14em; margin: 0 0 18px;
+    font-size: clamp(19px, 5vw, 30px); line-height: 1.3; letter-spacing: .1em; margin: 0 0 10px;
     font-weight: 800; color: var(--cream);
   }
-  .hero p.lede { max-width: 560px; margin: 0 auto 28px; color: var(--parch); }
-  .cta {
-    display: inline-block; padding: 14px 26px; border: 4px solid var(--bark-dark);
-    background: var(--gold); color: var(--bark-dark); font-weight: 800; letter-spacing: .08em;
-    text-decoration: none; box-shadow: 0 6px 0 var(--bark-dark);
+  .hero .line { margin: 0 auto 18px; max-width: 520px; color: var(--parch); }
+  .hero .trust { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+  .hero .trust b { color: var(--parch); font-weight: 700; }
+  .phone {
+    position: relative; width: min(232px, 62vw); aspect-ratio: 9 / 16; margin: 0 auto;
+    border: 7px solid #0a0e09; border-radius: 30px; overflow: hidden; background: #000;
+    box-shadow: 0 0 0 3px var(--bark-dark), 0 18px 40px rgba(0,0,0,.55);
   }
-  .cta.soon { background: var(--bark); color: var(--gold); border-color: var(--gold-dark); box-shadow: 0 6px 0 #0c0805; }
-  .note { margin-top: 14px; font-size: 14px; color: var(--muted); }
+  .phone video, .phone img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .heroart { display: block; width: min(400px, 92vw); height: auto; margin: 0 auto; }
+  .qr { display: none; }
+  @media (min-width: 900px) {
+    header.hero { padding: 56px 0 64px; text-align: left; }
+    .hero .grid { grid-template-columns: 1fr auto; gap: 56px; }
+    .hero .wordmark { margin: 0 0 18px; width: 380px; }
+    .hero .line { margin-left: 0; }
+    .heroart { width: 460px; }
+    .qr { display: flex; gap: 14px; align-items: center; margin-top: 26px; font-size: 14px; color: var(--muted); }
+    .qr img { width: 112px; height: 112px; padding: 8px; background: #fff; border: 4px solid var(--bark-dark); }
+  }
 
+  /* Proof numbers */
+  .stats {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px;
+    background: var(--bark-dark); border-top: 4px solid var(--bark-dark); border-bottom: 4px solid var(--bark-dark);
+  }
+  @media (min-width: 700px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+  .stat { background: var(--bark); padding: 16px 8px; text-align: center; box-shadow: inset 0 0 0 2px rgba(173,128,38,.3); }
+  .stat b { display: block; font-size: 30px; line-height: 1.1; color: var(--gold); letter-spacing: .04em; }
+  .stat span { font-size: 12px; letter-spacing: .14em; color: var(--parch); }
+
+  /* How it works */
+  section.how { padding: 44px 0 20px; }
+  .steps { list-style: none; margin: 0 auto; padding: 0; max-width: 760px; display: grid; gap: 12px; }
+  @media (min-width: 800px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .steps li { background: var(--forest-2); border: 4px solid var(--bark-dark); padding: 14px 16px; color: var(--parch); font-size: 15px; }
+  .steps li strong { display: block; color: var(--gold); letter-spacing: .12em; font-size: 14px; margin-bottom: 4px; }
+  .how .small { max-width: 760px; margin: 14px auto 0; font-size: 14px; color: var(--muted); text-align: center; }
+
+  /* Gameplay loops */
+  section.loops { padding: 28px 0 8px; }
+  .loopgrid { display: grid; gap: 28px; justify-items: center; }
+  @media (min-width: 800px) { .loopgrid { grid-template-columns: repeat(3, 1fr); } }
+  .loop h3 { margin: 0 0 12px; font-size: 14px; letter-spacing: .12em; color: var(--gold); text-align: center; }
+  .loop .phone { width: min(220px, 60vw); }
+
+  /* Screenshots */
   .shots {
     display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
-    padding: 28px 16px 36px; -webkit-overflow-scrolling: touch;
+    padding: 36px 16px 40px; -webkit-overflow-scrolling: touch;
   }
   .shots img {
-    flex: 0 0 auto; width: 240px; height: auto; border-radius: 18px;
+    flex: 0 0 auto; width: 200px; height: auto; border-radius: 16px;
     scroll-snap-align: center; box-shadow: 0 10px 28px rgba(0,0,0,.5);
   }
   @media (min-width: 900px) {
-    .shots { justify-content: flex-start; padding-left: max(16px, calc((100vw - 1080px) / 2)); }
-    .shots img { width: 280px; }
+    .shots { padding-left: max(16px, calc((100vw - 1080px) / 2)); }
+    .shots img { width: 240px; }
   }
 
-  section.features { padding: 24px 0 48px; }
-  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
-  @media (min-width: 700px) { .grid { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1000px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
-  .feature {
-    background: var(--bark); border: 4px solid var(--bark-dark);
-    box-shadow: inset 0 0 0 2px rgba(173,128,38,.35); padding: 20px 22px;
-  }
-  .feature h2 { margin: 0 0 8px; font-size: 16px; letter-spacing: .12em; color: var(--gold); }
-  .feature p { margin: 0; color: var(--parch); font-size: 15px; }
-
-  section.trailer { padding: 8px 0 8px; text-align: center; }
-  .trailer video {
-    width: min(300px, 80vw); height: auto; border-radius: 18px; background: #000;
-    box-shadow: 0 10px 28px rgba(0,0,0,.5);
-  }
-  .trailer p { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
-
-  section.maker { padding: 0 0 56px; }
+  /* Maker */
+  section.maker { padding: 8px 0 44px; }
   .maker .wrap { max-width: 720px; }
-  .maker h2 { margin: 0 0 10px; font-size: 16px; letter-spacing: .12em; color: var(--gold); }
-  .maker p { margin: 0; color: var(--parch); }
+  .maker .card { background: var(--bark); border: 4px solid var(--bark-dark); box-shadow: inset 0 0 0 2px rgba(173,128,38,.35); padding: 20px 22px; }
+  .maker h2 { margin: 0 0 10px; font-size: 15px; letter-spacing: .12em; color: var(--gold); }
+  .maker p { margin: 0 0 10px; color: var(--parch); }
+  .maker p:last-child { margin: 0; }
 
-  section.facts { padding: 0 0 56px; }
-  .facts ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-  .facts li { padding-left: 26px; position: relative; color: var(--parch); }
-  .facts li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 10px; height: 10px; background: var(--gold); }
+  /* Closing band */
+  section.end {
+    padding: 40px 0 48px; text-align: center;
+    background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(232,184,74,.10), transparent 70%);
+  }
+  .end h2 { margin: 0 0 18px; font-size: clamp(17px, 4vw, 24px); letter-spacing: .1em; }
+  .end .facts { margin: 22px auto 0; padding: 0; list-style: none; max-width: 620px; font-size: 14px; color: var(--muted); }
+  .end .facts li { margin: 4px 0; }
+  .end .qr { justify-content: center; }
 
-  footer { border-top: 4px solid var(--bark-dark); background: #0e140c; padding: 28px 0 40px; font-size: 14px; color: var(--muted); }
+  footer { border-top: 4px solid var(--bark-dark); background: #0e140c; padding: 24px 0 96px; font-size: 14px; color: var(--muted); }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
   footer nav a { margin-right: 18px; }
+  @media (min-width: 900px) { footer { padding-bottom: 36px; } }
+
+  /* Phone-only bottom bar, shown once the hero button scrolls away */
+  .bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(14,20,12,.96); border-top: 4px solid var(--bark-dark);
+    transform: translateY(110%); transition: transform .2s ease-out;
+  }
+  .bar.show { transform: none; }
+  .bar img.wm { width: 128px; height: auto; }
+  .bar .badge img { height: 44px; }
+  .bar .btn { padding: 10px 14px; font-size: 13px; box-shadow: 0 4px 0 var(--bark-dark); }
+  @media (min-width: 900px) { .bar { display: none; } }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <div class="wrap">
-    <img class="icon" src="img/icon.png" alt="ByteQuest app icon" width="112" height="112">
-    <img class="wordmark pixel" src="img/wordmark.png" alt="ByteQuest" width="536" height="83">
-    <h1>BECOME THE STRONGEST ADVENTURER IN YOUR CITY</h1>
-    <p class="lede">Your town is covered in fog. Walk to clear it, find landmarks, fight monsters, and win loot. Every step you take earns coins.</p>
-    <span class="cta soon">COMING SOON TO IPHONE</span>
-    <p class="note">Free to play. No ads. No account to make.</p>
+  <div class="wrap grid">
+    <div>
+      <img class="wordmark pixel" src="img/wordmark.png" alt="ByteQuest" width="536" height="83">
+      <h1>BECOME THE STRONGEST ADVENTURER IN YOUR CITY</h1>
+      <p class="line">Walk your city to clear the fog, fight monsters, and win loot.</p>
+      <div id="hero-cta">
+        <a class="badge" data-ct="site-hero" href="https://apps.apple.com/app/id6786463658"><img src="img/app-store-badge.svg" alt="Download on the App Store" width="150" height="50"></a>
+      </div>
+      <p class="trust"><b>Free to play.</b> No ads. No account to make. Made by one developer.</p>
+      <div class="qr">
+        <img src="img/qr-app.png" alt="QR code for ByteQuest on the App Store" width="248" height="248" class="pixel">
+        <span>Scan with your iPhone<br>camera to get ByteQuest.</span>
+      </div>
+    </div>
+    <picture>
+      <source srcset="img/hero.webp" type="image/webp">
+      <img class="heroart" src="img/hero.png" width="1000" height="1010"
+           alt="Three iPhones showing ByteQuest: the fog clearing over a city map, a battle with a Dragon Whelp, and a legendary sword won at Coit Tower. A harpy, a whelp and a roc stand in front.">
+    </picture>
   </div>
 </header>
 
-<section class="trailer">
-  <video src="img/trailer.mp4" poster="img/trailer-poster.jpg" controls playsinline muted preload="none"
-         width="540" height="960" aria-label="Gameplay: the fog clearing on a walk"></video>
-  <p>Gameplay, sped up 8 times.</p>
+<div class="stats" aria-label="What's in the game">
+  <div class="stat"><b>40+</b><span>ENEMIES</span></div>
+  <div class="stat"><b>120+</b><span>PIECES OF GEAR</span></div>
+  <div class="stat"><b>18</b><span>STORY CHAPTERS</span></div>
+  <div class="stat"><b>7</b><span>SIDE QUESTS</span></div>
+</div>
+
+<section class="how">
+  <div class="wrap">
+    <h2 class="label">HOW IT WORKS</h2>
+    <ol class="steps">
+      <li><strong>1. WALK</strong>Walk with the game open. The fog clears wherever you go.</li>
+      <li><strong>2. FIND</strong>Landmarks, monsters, and quests appear on your map.</li>
+      <li><strong>3. FIGHT AND COLLECT</strong>Win battles, open chests, and build your camp.</li>
+    </ol>
+    <p class="small">Steps you take with the app closed still earn coins, if you allow Apple Health.<br>Please stay aware of your surroundings while you play.</p>
+  </div>
+</section>
+
+<section class="loops">
+  <div class="wrap loopgrid">
+    <div class="loop">
+      <h3>MONSTERS GUARD THE LOOT</h3>
+      <div class="phone"><video data-src="img/loop-battle.mp4" poster="img/poster-battle.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="Gameplay: a timing battle against a Dragon Whelp"></video></div>
+    </div>
+    <div class="loop">
+      <h3>BIG LANDMARKS, BETTER LOOT</h3>
+      <div class="phone"><video data-src="img/loop-loot.mp4" poster="img/poster-loot.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="Gameplay: winning the legendary sword Dawnbreaker at Fort Mason Center"></video></div>
+    </div>
+    <div class="loop">
+      <h3>BUILD YOUR CAMP</h3>
+      <div class="phone"><video data-src="img/loop-camp.mp4" poster="img/poster-camp.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="Gameplay: the three camps: Streamside, the Treetop Village and the Throne Room"></video></div>
+    </div>
+  </div>
 </section>
 
 <div class="shots" aria-label="Screenshots">
@@ -131,59 +231,89 @@
   <img src="img/09_steps_widget.jpg" alt="Track coins as you walk with the Home Screen widgets" width="600" height="1303" loading="lazy">
 </div>
 
-<section class="features">
-  <div class="wrap grid">
-    <div class="feature">
-      <h2>EXPLORE</h2>
-      <p>Walk real streets with the game open to clear the fog. Parks, piers, and monuments become landmarks with prizes, and most have a new prize every hour.</p>
-    </div>
-    <div class="feature">
-      <h2>FIGHT</h2>
-      <p>Battles are timing games. Time your taps and swipes to attack, tap to block. A perfect fight takes no damage. There are over 40 enemies to fight.</p>
-    </div>
-    <div class="feature">
-      <h2>FOLLOW THE STORY</h2>
-      <p>Rumblings of War is a six-part quest set in your own town, with seven side quests besides. Strangers appear on your map with work for you.</p>
-    </div>
-    <div class="feature">
-      <h2>WIN LOOT</h2>
-      <p>Over 120 hats, outfits, weapons, shields, and pets in five rarities. Two legendary sets are hidden in the game.</p>
-    </div>
-    <div class="feature">
-      <h2>BUILD YOUR CAMP</h2>
-      <p>Grow your camp from a tent by a stream to a treetop village to a throne room. Your pets live there, and your spare gear goes on display.</p>
-    </div>
-    <div class="feature">
-      <h2>JOIN A GUILD</h2>
-      <p>Pick the Assassins, Knights, or Clerics. Hold an arena and your hero defends it against real players while your phone stays in your pocket.</p>
+<section class="maker">
+  <div class="wrap">
+    <div class="card">
+      <h2>WHO MADE THIS</h2>
+      <p>Welcome adventurer! My name is Neal and ByteQuest is my love letter to the fantasy genre that I've been obsessed with my whole life. I hope you enjoy it, and PLEASE give me ideas on how I can improve this experience. I read every piece of feedback that comes in personally. Now get out there and explore!</p>
+      <p><a href="mailto:hello@playbytequest.com">hello@playbytequest.com</a></p>
     </div>
   </div>
 </section>
 
-<section class="facts">
+<section class="end">
   <div class="wrap">
-    <ul>
-      <li>Steps earn coins, including steps taken with the app closed (from Apple Health, only if you allow it).</li>
-      <li>A Home Screen widget shows today's steps and coins.</li>
-      <li>Your progress is saved to your own iCloud, so a new phone picks up where you left off.</li>
+    <h2>BECOME A LOCAL LEGEND</h2>
+    <div id="end-cta">
+      <a class="badge" data-ct="site-end" href="https://apps.apple.com/app/id6786463658"><img src="img/app-store-badge.svg" alt="Download on the App Store" width="150" height="50"></a>
+    </div>
+    <div class="qr">
+      <img src="img/qr-app.png" alt="QR code for ByteQuest on the App Store" width="248" height="248" class="pixel">
+      <span>Scan with your iPhone<br>camera to get ByteQuest.</span>
+    </div>
+    <ul class="facts">
+      <li>For iPhone, on the US App Store.</li>
+      <li>Your progress saves to your own iCloud, so a new phone picks up where you left off.</li>
       <li>Location is used only while the app is open. We never receive your route.</li>
     </ul>
   </div>
 </section>
 
-<section class="maker">
-  <div class="wrap">
-    <h2>WHO MADE THIS</h2>
-    <p>Welcome adventurer! My name is Neal and ByteQuest is my love letter to the fantasy genre that I've been obsessed with my whole life. I hope you enjoy it, and PLEASE give me ideas on how I can improve this experience. I read every piece of feedback that comes in personally. Now get out there and explore!</p>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
-    <nav><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+    <nav><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="mailto:hello@playbytequest.com">Contact</a></nav>
     <span>&copy; 2026 Neal Falletta-Cowden</span>
   </div>
 </footer>
 
+<div class="bar" id="bar" aria-hidden="true">
+  <img class="wm pixel" src="img/wordmark.png" alt="" width="536" height="83">
+  <a class="badge" data-ct="site-bar" href="https://apps.apple.com/app/id6786463658"><img src="img/app-store-badge.svg" alt="Download on the App Store" width="132" height="44"></a>
+</div>
+
+<script>
+(function () {
+  // App Store campaign links. PT is the provider token from an App Store Connect
+  // campaign link (same for every app on the account). Until it's filled in, links
+  // go to the plain product page.
+  var APP_ID = '6786463658';
+  var PT = '';
+  var params = new URLSearchParams(location.search);
+  var src = (params.get('utm_source') || params.get('src') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 24);
+  document.querySelectorAll('a[data-ct]').forEach(function (a) {
+    if (!PT) return;
+    var ct = src ? 'web-' + src : a.getAttribute('data-ct');
+    a.href = 'https://apps.apple.com/app/apple-store/id' + APP_ID + '?pt=' + PT + '&ct=' + encodeURIComponent(ct.slice(0, 30)) + '&mt=8';
+  });
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Gameplay loops load and play only while on screen.
+  var loops = document.querySelectorAll('video[data-src]');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) {
+          if (!v.src) v.src = v.getAttribute('data-src');
+          if (!reduce) v.play().catch(function () {});
+        } else { v.pause(); }
+      });
+    }, { rootMargin: '120px' });
+    loops.forEach(function (v) { io.observe(v); });
+
+    // Bottom bar appears once the hero button is off screen.
+    var bar = document.getElementById('bar');
+    var heroCta = document.getElementById('hero-cta');
+    var endCta = document.getElementById('end-cta');
+    var heroGone = false, endShown = false;
+    var sync = function () { bar.classList.toggle('show', heroGone && !endShown); };
+    new IntersectionObserver(function (es) { heroGone = !es[0].isIntersecting; sync(); }).observe(heroCta);
+    new IntersectionObserver(function (es) { endShown = es[0].isIntersecting; sync(); }).observe(endCta);
+  } else {
+    loops.forEach(function (v) { v.src = v.getAttribute('data-src'); });
+  }
+})();
+</script>
 </body>
 </html>
